@@ -52,8 +52,6 @@ def convert_currency(api_key: str, from_currency: str, to_currency: str, amount:
         error_messages = {
             "invalid-key": "The API key is invalid. Use --key to set a valid key.",
             "inactive-account": "Your API account is inactive. Check your account at exchangerate-api.com.",
-            "quota-reached": "Your monthly API quota has been reached. Upgrade your plan or wait until next month.",
-            "unsupported-code": f"One of the currency codes ({from_currency} / {to_currency}) is not supported.",
             "malformed-request": "The request was malformed. Check the currency codes and amount.",
         }
         print(f"Error: {error_messages.get(error_type, error_type)}")
@@ -65,9 +63,9 @@ def main() -> None:
         description="Currency Converter CLI - Convert between currencies using live exchange rates.",
         epilog=(
             "Examples:\n"
-            "  First run:       python currency_converter.py --key YOUR_API_KEY USD EUR 100\n"
-            "  Subsequent runs: python currency_converter.py USD EUR 100\n"
-            "  Save key only:   python currency_converter.py --key YOUR_API_KEY"
+            "  First run:       py conv.py --key YOUR_API_KEY USD EUR 100\n"
+            "  Subsequent runs: py conv.py USD EUR 100\n"
+            "  Save key only:   py conv.py --key YOUR_API_KEY"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -109,7 +107,7 @@ def main() -> None:
         print(
             "Error: No API key found.\n"
             "  Get a free key at https://www.exchangerate-api.com/\n"
-            "  Then run: python currency_converter.py --key YOUR_API_KEY\n"
+            "  Then run: py conv.py --key YOUR_API_KEY\n"
         )
         sys.exit(1)
 
@@ -126,11 +124,11 @@ def main() -> None:
     elif any(a is not None for a in conversion_args):
         # Some but not all conversion arguments given
         print("Error: Please provide all three arguments: FROM TO AMOUNT")
-        print("  Example: python currency_converter.py USD EUR 100")
+        print("  Example: py conv.py USD EUR 100")
         sys.exit(1)
     elif args.key:
         # Key was saved, no conversion requested — that is fine
-        print("Run 'python currency_converter.py FROM TO AMOUNT' to convert currencies.")
+        print("Run 'py conv.py FROM TO AMOUNT' to convert currencies.")
     else:
         parser.print_help()
 

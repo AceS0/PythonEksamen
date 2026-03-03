@@ -53,13 +53,13 @@ pip install -r requirements.txt
 On the first run you need to supply your API key with `--key`. It will be saved to a `.env` file so you do not have to type it again.
 
 ```bash
-py currency_converter.py --key YOUR_API_KEY USD EUR 100
+py conv.py --key YOUR_API_KEY USD EUR 100
 ```
 
 ### Subsequent runs — key is read from .env automatically
 
 ```bash
-py currency_converter.py USD EUR 100
+py conv.py USD EUR 100
 ```
 
 **Output:**
@@ -71,7 +71,7 @@ py currency_converter.py USD EUR 100
 ### Save a new API key without converting
 
 ```bash
-py currency_converter.py --key YOUR_NEW_API_KEY
+py conv.py --key YOUR_NEW_API_KEY
 ```
 
 ---
@@ -80,9 +80,9 @@ py currency_converter.py --key YOUR_NEW_API_KEY
 
 | Command | Description |
 |---|---|
-| `py currency_converter.py USD EUR 50` | Convert 50 US dollars to euros |
-| `py currency_converter.py GBP DKK 200` | Convert 200 British pounds to Danish kroner |
-| `py currency_converter.py --key ABC123 JPY USD 1000` | Save key and convert 1000 yen to dollars |
+| `py conv.py USD EUR 50` | Convert 50 US dollars to euros |
+| `py conv.py GBP DKK 200` | Convert 200 British pounds to Danish kroner |
+| `py conv.py --key ABC123 JPY USD 1000` | Save key and convert 1000 yen to dollars |
 
 ---
 
